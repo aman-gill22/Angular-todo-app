@@ -33,4 +33,9 @@ export class TodosComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  DeleteTodo(todo: Todo) {
+    var index = this.todos.indexOf(todo);
+    this.todos.splice(index, 1);
+  }
 }
