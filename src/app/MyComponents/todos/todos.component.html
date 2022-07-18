@@ -1,11 +1,16 @@
-<app-add-todo (addToDo)="HandleAdd($event)"></app-add-todo>
-<h4>Your Todos</h4>
-<div *ngIf="this.todos.length === 0; else elseblock">No Todos to display</div>
-<ng-template #elseblock>
-  <div *ngFor="let todo of todos">
-    <app-todoitem
-      [todo]="todo"
-      (todoDelete)="DeleteTodo($event)"
-    ></app-todoitem>
-  </div>
-</ng-template>
+<div class="container">
+  <h1 class="text-center mb-3">To Do List by Amaninder</h1>
+  <app-add-todo (addToDo)="HandleAdd($event)"></app-add-todo>
+  <h4>Your Todos</h4>
+  <div *ngIf="this.todos.length === 0; else elseblock">No Todos to display</div>
+  <ng-template #elseblock>
+    <div *ngFor="let todo of todos; index as i">
+      <app-todoitem
+        [todo]="todo"
+        [i]="i"
+        (todoDelete)="DeleteTodo($event)"
+        (todoDone)="ToggleTodo($event)"
+      ></app-todoitem>
+    </div>
+  </ng-template>
+</div>
